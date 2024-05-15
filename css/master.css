@@ -1,0 +1,879 @@
+/*Présentation Graine*/
+/*Variables CSS*/
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,700&display=swap');
+/*
+.ibm-plex-mono-regular {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ibm-plex-mono-medium {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.ibm-plex-mono-semibold {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.ibm-plex-mono-bold-italic {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 700;
+  font-style: italic;
+}
+
+*/
+:root {
+  /*Variables Button*/
+  --main-background-color: rgb(196, 196, 196);
+  --main-background-MagicForm: #c2c2c2;
+  --main-background-navBar: #d6d6d6;
+  --color-select: #1A8921ff;
+  --color-selected: #f0f0f0;
+  --main-border: none;
+  --main-radius:20px;
+  --main-radiusInput: 5px;
+  --main-color: rgb(29, 29, 29);
+  --body-color:rgb(235, 235, 235);
+  --main-padding: 15px 32px;
+  --main-text-align: center;
+  --main-text-decoration: none;
+  --main-display: inline-block;
+  --main-font-size: 16px;
+  --main-cursor: pointer;
+  --main-marginButton: 0.2em;
+  /*Variables global*/
+  --main-radius: 0.5em;
+  --main-shadow: 2px 4px 5px 1px #151515;
+  /*--font-family: "Bebas Neue", sans-serif;*/
+  --font-family: "IBM Plex Mono", monospace;;
+  --font-family-titleEvent: "IBM Plex Mono", monospace;
+  --font-weight: 500;
+  --font-style: normal;
+  --color-title: #1A8921ff;;
+  --color-subTitle: #1A8921ff;;
+  /*Présentation*/
+  --padding-sheddulingShop: 0.2em 0 0.2em 0;
+  /*Variable color*/
+  --color-green: #4f8b36;
+  --color-yellow: #f1df57;
+  --color-chair: #fcfcfc;
+  --color-blueOneChair: #1B384D;
+  --color-red:#cc3915;
+  --color-blood: #700B15;
+  --color-darkGreen: #03470D;
+  --color-orange: #cc3915;
+  --color-neutralBone: #fdfdf8;
+
+}
+/*Presentation basique*/
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+  background-color: var(--body-color);
+  color: var(--main-color);
+}
+header {
+    text-align: center;
+}
+main {
+  flex:1;
+  text-align: center;
+}
+footer {
+    padding-top: 2vh;
+    margin-bottom: 2vh;
+    text-align: center;
+}
+aside {
+  margin: 0.25em;
+}
+
+h1 {
+  font-size: 2em;
+
+}
+.titleSite {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight);
+  font-style: var(--font-style);
+  color: var(--color-title);
+}
+h2 {
+  font-size: 1.2em;
+}
+.subTitleSite{
+  font-family: var(--font-family);
+  font-weight: var(--font-weight);
+  font-style: var(--font-style);
+  color: var(--color-subTitle);
+}
+.titleEventItem {
+  color: var(--color-blueOneChair);
+  font-family: var(--font-family-titleEvent);
+  font-style: var(--font-style);
+}
+h3 {
+  font-size: 1.5em;
+}
+a {
+  text-decoration: none;
+}
+/*Presentation*/
+.bold {
+  font-weight: bolder;
+  margin-bottom: 0.5em;
+  color: var(--color-darkGreen);
+}
+.bold::first-letter {
+  text-transform: capitalize;
+ 
+}
+.alignLi {
+  display: block ruby;
+}
+/*Date*/
+.displayDate::first-letter{
+  text-transform: uppercase;
+}
+ /*zone element*/ 
+ .down {
+  margin-top: 15vh;
+ }
+
+/*Flex*/
+.hoursOfShopping {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.flex-colonne-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-left: 19em;
+}
+
+.flex-rows {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+.flex-rows-carousel {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.flex-rows-simple {
+  display: flex;
+  flex-direction: row;
+}
+.flex-center {
+  align-items: center;
+  justify-content: center;
+}
+.flex-colonne {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+.paddingLeft {
+  padding-left: 4vw;
+}
+
+.flex-colonne-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: baseline;
+  flex-wrap: wrap;
+  align-content: center;
+}
+.form-AdmiEvent {
+  display: contents;
+}
+.nav {
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    background: var(--main-background-navBar);
+    border-radius: var(--main-radius);
+    border: 1px solid var(--main-color-interne);
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    width: auto;
+    padding: 0.25em;
+}
+.tableAdminNews7 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.Id {
+  width: 10em;
+  text-align: left;
+}
+.Title {
+  width: 10em;
+  text-align: left;
+}
+.CreatDate{
+  width: 10em;
+  text-align: left;
+}
+.publish{
+  width: 10em;
+  text-align: left;
+}
+.Valid {
+  width: 10em;
+  text-align: left;
+}
+.Update {
+  width: 10em;
+  text-align: left;
+} 
+.admin {
+  width: 10em;
+  text-align: left;
+}
+/*List*/
+.adminEventList{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+}
+.open{
+  width: 15vw;
+}
+
+.listClass {
+  list-style: none;
+  text-align: initial;
+}
+.listeProfil {
+  list-style: none;
+  text-align: left;
+}
+/*Formulaire*/
+.formulaireClassique {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  margin-bottom: 0.5em;
+  border-radius: 5px;
+}
+input, label {
+  margin-bottom: 0.25em;
+  padding: 0.3em;
+}
+input, textarea {
+  background-color: var(--color-chair);
+  border-radius: var(--main-radiusInput);
+
+}
+select {
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  background-color: var(--main-background-MagicForm);
+  border-radius: var(--main-radiusInput);
+}
+select:hover {
+  background-color: var(--color-select);
+}
+select:disabled {
+  color:var(--color-selected);
+}
+
+
+.textAreaNew {
+  padding-top: 2vh;
+  text-align: left;
+}
+.buttonForm {
+  margin: 0.5em;
+}
+/*Fin formulaire*/
+/*Titre et sousTitre*/
+.hautPage {
+  text-align: center;
+  display: inline-flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+}
+
+/*Navigation*/
+/*Navigation bandeau*/
+.navigationBandeau {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.navigationBandeau li {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin-left: 1em;
+  margin-right: 1em;
+  text-align: center;
+}
+/*Bouton lien*/
+/*publish on site*/
+/*Marquage admin*/
+.red{
+  background-color: var(--color-orange);
+}
+.formAdmin {
+  margin: 1em;
+}
+/*IMG*/
+.imgCarouselAuto {
+  border-radius: var(--main-radius);
+  width: 60vw;
+}
+
+/*Grid*/
+.adminNav {  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "nomNav phat visible zoneMenu Ordre Niveau deroulant valide";
+}
+
+.nomNav { grid-area: nomNav; }
+
+.phat { 
+  grid-area: phat;
+  width: 27vw;  
+}
+
+.visible { grid-area: visible; }
+
+.zoneMenu { grid-area: zoneMenu; }
+
+.Ordre { grid-area: Ordre; }
+
+.Niveau { grid-area: Niveau; }
+
+.deroulant { grid-area: deroulant; }
+
+.valide { grid-area: valide; }
+
+
+
+.indexArticle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.2fr 1.8fr;
+  gap: 1em 1em;
+  grid-auto-flow: row;
+  grid-template-areas: "TitleNews pictureNews"
+  "textNews pictureNews";
+  justify-items: start;
+  justify-content: space-evenly;
+  align-items: start;
+  margin: 0vh 15vw 0vh 15vw;
+}
+
+.pictureNews { 
+  grid-area: pictureNews;
+  margin: 10vh;
+}
+.imgNews {
+  border-radius: var(--main-radius);
+  width: 100%;
+}
+.TitleNews { 
+  grid-area: TitleNews;
+  margin-left: auto;
+  margin-right: auto;
+}
+.dateNews {
+  text-align: left;
+  font-weight: 600;
+}
+.textNews { 
+  grid-area: textNews;
+  text-align: justify;
+  width: 100%;
+  padding-left: 4em;
+  font-size: larger;
+}
+.textEvents {
+  text-align: justify;
+  width: 100%;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+}
+.listClass li {
+  margin-bottom: 0.6em;
+}
+.dayweek{
+  color:var(--main-background-color);
+  font-size: 1.2em;
+}
+.styleListNews, ul {
+  list-style: none;
+
+}
+/*Gallery Events*/
+.gallery {
+    margin: 2vh auto 0;
+    padding: 0 1vw;
+    max-width:100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    grid-gap: 5px;
+    justify-content: center;
+  }
+.item {
+    min-height: auto;
+    min-width: auto;
+    padding: 0.5em;
+    background: var(--color-chair);
+    color: rgb(32, 32, 32);
+    border-radius: var(--main-radiusInput);
+    display: inline;
+    align-items: center;
+    justify-content: center;
+    border: var(--color-blueOneChair) solid 1px;
+  }
+/*Variable CSS boutton*/
+
+/*Fin Maitre boutton*/
+button {
+  background-color: var(--main-background-color);
+  border: var(--main-border);
+  border-radius: var(--main-radius);
+  color: var(--main-color);
+  padding: var(--main-padding);
+  text-align: var(--main-text-align);
+  text-decoration: var(--main-text-decoration);
+  display: var(--main-display);
+  font-size: var(--main-font-size);
+  cursor: var(--main-cursor);
+  margin: var(--main-marginButton);
+}
+a {
+  background-color: var(--main-background-color);
+  border: var(--main-border);
+  border-radius: var(--main-radius);
+  color: var(--main-color);
+  padding: var(--main-padding);
+  text-align: var(--main-text-align);
+  text-decoration: var(--main-text-decoration);
+  display: var(--main-display);
+  font-size: var(--main-font-size);
+  cursor: var(--main-cursor);
+  margin: var(--main-marginButton);
+}
+.buttonClosingModal {
+  font-size: 0.9em;
+}
+.link {
+  background-color: #fae9cb00;
+  border: none;
+  border-radius: none;
+  color: var(--color-subTitle);
+  padding: 0em;
+  text-align: left;
+  text-decoration: var(--main-text-decoration);
+  display: inline;
+  font-size: 1em;
+  cursor: var(--main-cursor);
+  margin: 0em;
+  text-align: center;
+}
+.lienTab {
+  background-color: #ffffff;
+
+  color: black;
+  padding: 0 0 0 0;
+  text-align: left;
+  text-decoration: none;
+  display: block;
+  font-size: 1em;
+  cursor: var(--main-cursor);
+}
+.lienNav {
+  background-color: var(--main-background-color);
+  border: var(--main-border);
+  color: var(--main-color);
+  padding: var(--main-padding);
+  text-align: var(--main-text-align);
+  text-decoration: var(--main-text-decoration);
+  display: var(--main-display);
+  font-size: var(--main-font-size);
+  cursor: var(--main-cursor);
+}
+.lienNav:hover {
+   border: 3px solid #302A39ff;
+   transition: border 0.7s;
+}
+/*Menu bandeau Tester sur un autre projet*/
+.dropdown {
+display: inline-block;
+}
+.dropdown-child {
+position: absolute;
+display: none;
+min-width: 250px;
+}
+
+.dropdown-child a {
+  background-color: var(--main-background-color);
+  border: var(--main-border);
+  color: var(--main-color);
+  /* padding: var(--main-padding); */
+  text-align: var(--main-text-align);
+  text-decoration: var(--main-text-decoration);
+  display: var(--main-display);
+  font-size: var(--main-font-size);
+  cursor: var(--main-cursor);
+  padding: 20px;
+  display: block;
+}
+.dropdown:hover .dropdown-child {
+display: block;
+transition: display 3s;
+}
+/*Fin présentation graines*/
+/*Grid */
+.shoppingHour {  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 5px 5px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "dayOfWeek OpenMorning CloseMorning OpenAfternoon CloseAfternoon";
+  font-family: var(--font-family);
+  font-style: var(--font-style);
+}
+.shoppingHourCloseMorning {  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 5px 5px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "dayOfWeek close OpenAfternoon CloseAfternoon";
+  font-family: var(--font-family);
+  font-style: var(--font-style);
+}
+.shoppingHourCloseAfternoon {  display: grid;
+  grid-template-columns: 1fr 1fr 1fr  2fr;
+  grid-template-rows: 1fr;
+  gap: 5px 5px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "dayOfWeek OpenMorning CloseMorning close";
+  font-family: var(--font-family);
+  font-style: var(--font-style);
+}
+
+.close {
+  font-family: var(--font-family);
+  font-style: var(--font-style);
+  margin: 0.8em;
+  padding: var(--padding-sheddulingShop);
+  color:var(--color-neutralBone);
+}
+.dayOfWeek { 
+  grid-area: dayOfWeek;
+  margin: var(--main-marginButton);
+  padding: var(--padding-sheddulingShop);
+}
+
+.OpenMorning { 
+  grid-area: OpenMorning;
+  margin: var(--main-marginButton);
+  padding: var(--padding-sheddulingShop);
+}
+
+.CloseMorning { 
+  grid-area: CloseMorning; 
+  margin: var(--main-marginButton);
+  padding: var(--padding-sheddulingShop);
+}
+
+.OpenAfternoon { 
+  grid-area: OpenAfternoon; 
+  margin: var(--main-marginButton);
+  padding: var(--padding-sheddulingShop);
+}
+
+.CloseAfternoon { 
+  grid-area: CloseAfternoon; 
+  margin: var(--main-marginButton);
+  padding: var(--padding-sheddulingShop);
+}
+
+.moduleNav {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "nomNav phat visible zoneMenu Ordre Niveau deroulant valide";
+    /* Presentation */
+    text-align: initial;
+    border: 1px black solid;
+    padding: 0.25em;
+}
+
+.nomNav { grid-area: nomNav; }
+
+.phat { grid-area: phat; }
+
+.visible { grid-area: visible; }
+
+.zoneMenu { grid-area: zoneMenu; }
+
+.Ordre { grid-area: Ordre; }
+
+.Niveau { grid-area: Niveau; }
+
+.deroulant { grid-area: deroulant; }
+
+.valide { grid-area: valide; }
+
+/*JavaScript Magic CSS*/
+
+#hiddenForm {
+  padding-top: 0.5em;
+  padding-bottom: 0.2em;
+  top: 35%;
+  left: 35%;
+  background-color: var(--main-background-MagicForm);
+  -webkit-box-shadow: var(--main-shadow);
+  box-shadow: var(--main-shadow);
+  position: absolute;
+  width: 30%;
+  display: none;
+  /* border: 1px solid black; */
+  border: var(--main-border);
+  border-radius: var(--main-radius);
+  z-index: 2;
+}
+.objetLeft {
+    text-align: left;
+}
+/*JavaScript Magic CSS*/
+/*Burger Menu*/
+.menu-btn {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  border-radius: var(--main-radius);
+}
+
+.btn-line {
+  width: 30px;
+  height: 3px;
+  background-color:var(--main-background-color);
+  margin: 3px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.menu ul li {
+  margin-right: 20px;
+}
+
+.menu ul li a {
+  color: var(--main-color);
+  text-decoration: none;
+}
+.logo {
+  position: absolute;
+  left: 1em;
+  margin-right: 0.25em;
+}
+.logoPicture {
+  height: 15vh;
+}
+.smartPhone {
+  display: none;
+}
+
+.scheduleShop {
+  margin: auto;
+}
+
+.scheduleShop th {
+  color: var(--color-darkGreen);
+  padding: 2em;
+  border: 1px solid var(--color-darkGreen);
+}
+.scheduleShop tr td {
+  border: 1px solid var(--color-darkGreen);
+  text-align: left;
+  text-align: center;
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .smartPhone {
+    display: block;
+  }
+  .hautPage {
+    display: block;
+  }
+  .menu {
+      display: none;
+  }
+  .flex-rows{
+    flex-direction: column;
+    align-items: center;
+  }
+  .flex-colonne-left {
+    margin-left: 0em;
+  }
+  .menu-btn {
+      position: absolute;
+      top: 3vh;
+      display: block;
+      width: fit-content;
+      display: flex;
+      background-color: var(--main-background-navBar);
+      padding: 1em;
+      margin-left: 0;
+  }
+
+  .menu.active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      width: auto;
+      background-color: var(--main-background-color);
+      top: 10%;
+      left: 0;
+      border: var(--main-background-MagicForm) solid 10px;
+  }
+
+  .menu.active ul {
+      flex-direction: column;
+  }
+
+  .menu.active ul li {
+      margin-right: 0;
+      margin-bottom: 10px;
+  }
+  .logo{
+    position: static;
+  
+  }
+  .logoPicture {
+    height: 13vh;
+  }
+    .centrale{
+    display: none;
+  }
+  .adress {
+    display: none;
+  }
+  #hiddenForm {
+    top: 30%;
+    left: 15%;
+    width: 64%;
+  }
+
+ 
+  .indexArticle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.hoursOfShopping {
+font-size: 0.8em;
+}
+
+.TitleNews { 
+  grid-area: TitleNews;
+  width: 100%;
+}
+
+.textNews { 
+  grid-area: textNews;
+  text-align: justify;
+  width: 100%;
+}
+  .listClass { 
+    text-indent: -20vw;
+    list-style: none;
+    text-align: left;
+    padding:0vw;
+    font-size: 0.8em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .listClass li {
+    margin-bottom: 0.6em;
+    list-style: none;
+  }
+  .imgNews {
+    display: block;
+    margin-bottom: 0em;
+  }
+  .pictureNews{
+    margin:6vw;
+  }
+  .galleryReserveTable {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .open {
+    width: 20em;
+  }
+  .modal {
+    width: 70vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .imgCarouselAuto {
+    border-radius: var(--main-radius);
+    width: 100%;
+    height: 100%;
+  }
+  .flex-rows-carousel {
+    flex-direction: column;
+  }
+}
+/*Burger Menu*/
