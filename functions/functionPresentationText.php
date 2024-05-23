@@ -3,7 +3,7 @@ function listHTML($data, $class) {
     $StepUL = str_replace('ulStart','<ul class="'.$class.'">',$data);
     $stepUlEnd = str_replace('ulEnd','</ul>',$StepUL);
     $stepLI = str_replace('listStart','<li>',  $stepUlEnd);
-    $text = str_replace('liEnd','</li>', $stepLI);
+    $text = str_replace('listEnd','</li>', $stepLI);
     return $text;
 }
 function lineBreak($data) {
@@ -11,7 +11,7 @@ function lineBreak($data) {
 }
 function strongHTML($data){
     $setp1 = str_replace('strongStart', '<strong class="dayweek">', $data);
-    return str_replace('EndStrong', ' </strong>', $setp1);
+    return str_replace('strongEnd', ' </strong>', $setp1);
 }
 function selectHTML($data, $label, $selectList) {
     echo '<div class="publish">

@@ -1,5 +1,5 @@
 <?php
-require_once('sources/blog/objets/SQLcategories.php');
+require ('sources/blog/objets/SQLcategories.php');
 class TemplateCategories extends SQLCategories
 {
     public function displayCategorie ($valid, $idNav) {
@@ -18,11 +18,27 @@ class TemplateCategories extends SQLCategories
                         <form  action ="'.encodeRoutage(67).'" method="post">
                         <input type="hidden" name="id" value="'.$value['id'].'"/>
                         <button type="submit" name="idNav" value="'.$idNav.'">'.$messageButton.'</button>
-                        </form>
-                    </li>';
+                        </form>';
+                        if($valid == 0) {
+                            echo ' <form  action ="'.encodeRoutage(68).'" method="post">
+                            <input type="hidden" name="id" value="'.$value['id'].'"/>
+                            <button type="submit" name="idNav" value="'.$idNav.'">Delete categorie</button>
+                            </form>';
+                        }
+                echo '</li>';
             }
             echo '</ul>';
         }
   
+    }
+    public function selectACategorie () {
+        $dataCategories = $this->readCategories (1);
+        echo '<label for="id_categorie">Catégorie de l\'article ?</label>';
+        echo '<select id="id_categorie" name="id_categorie">';
+        foreach ($dataCategories as $value) {
+            echo '<option value='.$value['id'].'>'.$value['nameCategorie'].'</option>';
+        }
+        echo '</select>';
+
     }
 }

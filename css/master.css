@@ -375,63 +375,6 @@ select:disabled {
 
 .valide { grid-area: valide; }
 
-
-
-.indexArticle {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 0.2fr 1.8fr;
-  gap: 1em 1em;
-  grid-auto-flow: row;
-  grid-template-areas: "TitleNews pictureNews"
-  "textNews pictureNews";
-  justify-items: start;
-  justify-content: space-evenly;
-  align-items: start;
-  margin: 0vh 15vw 0vh 15vw;
-}
-
-.pictureNews { 
-  grid-area: pictureNews;
-  margin: 10vh;
-}
-.imgNews {
-  border-radius: var(--main-radius);
-  width: 100%;
-}
-.TitleNews { 
-  grid-area: TitleNews;
-  margin-left: auto;
-  margin-right: auto;
-}
-.dateNews {
-  text-align: left;
-  font-weight: 600;
-}
-.textNews { 
-  grid-area: textNews;
-  text-align: justify;
-  width: 100%;
-  padding-left: 4em;
-  font-size: larger;
-}
-.textEvents {
-  text-align: justify;
-  width: 100%;
-  padding-left: 0.2em;
-  padding-right: 0.2em;
-}
-.listClass li {
-  margin-bottom: 0.6em;
-}
-.dayweek{
-  color:var(--main-background-color);
-  font-size: 1.2em;
-}
-.styleListNews, ul {
-  list-style: none;
-
-}
 /*Gallery Events*/
 .gallery {
     margin: 2vh auto 0;
@@ -453,6 +396,9 @@ select:disabled {
     align-items: center;
     justify-content: center;
     border: var(--color-blueOneChair) solid 1px;
+  }
+  .miniaturePicture {
+    max-width: 250px;
   }
 /*Variable CSS boutton*/
 
