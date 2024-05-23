@@ -1,7 +1,5 @@
 <?php
 //  encodeRoutage(71)
-print_r($_POST);
-// encodeRoutage(67)
 require('../sources/blog/objets/SQLArticles.php');
 $arrayKey = ['id'];
 $controlPost = array();

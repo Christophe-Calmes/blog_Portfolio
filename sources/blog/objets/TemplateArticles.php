@@ -50,6 +50,21 @@ final class TemplateArticles extends SQLArticles
 
             }
         echo '</article>';
-     
+    }
+    public function displayOneArticleAdmin ($idArticle, $idNav) {
+        $statusArticle = $this->validAndPublishArticle ($idArticle);
+        $dataArticle = $this->selectOneArticle ($idArticle, $statusArticle[0]['publish'], $statusArticle[0]['valid']);
+        $articleEnchanced = $dataArticle[0]['textArticle'];
+        $articleEnchanced = listHTML($articleEnchanced, 'listClass');
+        $articleEnchanced = lineBreak ($articleEnchanced);
+        $articleEnchanced = strongHTML ($articleEnchanced);
+        $articleEnchanced = linkHTML ($articleEnchanced);
+
+            echo '<article class="articleBlog">
+                    <h2>'.$dataArticle[0]['title'].'</h2>
+                    <h4>Catégorie de l\'article : '.$dataArticle[0]['nameCategorie'].'</h4>
+                    <p>'.$articleEnchanced.'</p>
+                </article>';
+
     }
 }

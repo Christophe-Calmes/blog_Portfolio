@@ -400,6 +400,16 @@ select:disabled {
   .miniaturePicture {
     max-width: 250px;
   }
+/*Article blog*/
+.articleBlog {
+  background-color: var(--main-background-color);
+  border: var(--main-border);
+  border-radius: var(--main-radius);
+  color: var(--main-color);
+  padding: var(--main-padding);
+
+}
+
 /*Variable CSS boutton*/
 
 /*Fin Maitre boutton*/
@@ -448,7 +458,6 @@ a {
 }
 .lienTab {
   background-color: #ffffff;
-
   color: black;
   padding: 0 0 0 0;
   text-align: left;

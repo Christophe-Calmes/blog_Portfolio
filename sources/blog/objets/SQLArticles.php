@@ -52,4 +52,21 @@ class SQLArticles
         $delete = "DELETE FROM `articles` WHERE `id` = :id AND `valid` = 0 AND `publish` = 0;";
         return ActionDB::access($delete , $param, 1);
     }
+    protected function validAndPublishArticle ($idArticle) {
+        $select = "SELECT `publish`, `valid` FROM `articles` WHERE `id` = :id;";
+        $param = [['prep'=>':id', 'variable'=>$idArticle]];
+        return ActionDB::select($select, $param, 1);
+    }
+    protected function selectOneArticle ($idArticle, $publish, $valid) {
+        $select = "SELECT `articles`.`id` AS `idArticle`, `id_categorie`, `idUser`, `title`, 
+        `textArticle`, `namePicture`, `date_creat`, `date_update`, `publish`, 
+        `articles`.`valid`, `nameCategorie` 
+        FROM `articles`
+        INNER JOIN `categories`ON   `categories`.`id` = `articles`. `id_categorie`
+        WHERE `articles`.`id` = :id AND `publish` = :publish AND  `articles`.`valid` =:valid;";
+        $param = [['prep'=>':id', 'variable'=>$idArticle],
+                ['prep'=>':publish', 'variable'=>$publish], 
+                ['prep'=>':valid', 'variable'=>$valid]];
+        return ActionDB::select($select, $param, 1);
+    }
 }
