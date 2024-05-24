@@ -13,20 +13,17 @@ function strongHTML($data){
     $setp1 = str_replace('strongStart', '<strong class="dayweek">', $data);
     return str_replace('strongEnd', ' </strong>', $setp1);
 }
-function linkHTML ($data) {
-    $link = null;
-    $startTag = "titleLinkStart";
-    $endTag = "titleLinkEnd";
+
+function linkHTML($data) {
     $linkPattern = '/titleLinkStart (.*?) titleLinkEnd \[(https?:\/\/[^\]]+)\]/s';
-    if (preg_match($linkPattern, $data, $matches)) {
+    while (preg_match($linkPattern, $data, $matches)) {
         $text = $matches[1];
         $url = $matches[2];
         $link = '<a class="link" href="' . htmlspecialchars($url) . '">' . htmlspecialchars($text) . '</a>';
-
-        $data = preg_replace($linkPattern, $link, $data);
-    }
+        $data = preg_replace($linkPattern, $link, $data, 1); 
     return $data;
 }
+
 function selectHTML($data, $label, $selectList) {
     echo '<div class="publish">
     '.$selectList[$data].'
