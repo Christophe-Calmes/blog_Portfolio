@@ -52,6 +52,28 @@ class SQLArticles
         $delete = "DELETE FROM `articles` WHERE `id` = :id AND `valid` = 0 AND `publish` = 0;";
         return ActionDB::access($delete , $param, 1);
     }
+    public function findNamePicture ($idArticle) {
+        $select = "SELECT `namePicture` FROM `articles` WHERE `id`= :id;";
+        $param = [['prep'=>':id', 'variable'=>$idArticle]];
+        $dataNamePicture = ActionDB::select($select, $param, 1);
+        if(!empty($dataNamePicture)) {
+            return $this->picturePath.$dataNamePicture[0]['namePicture'];
+        }
+        return false;
+    }
+    public function updateArticle ($param) {
+        $update = "UPDATE `articles` 
+        SET `id_categorie`=:id_categorie,
+        `idUser`= :idUser,
+        `title`= :title,
+        `textArticle`=:textArticle,
+        `namePicture`=:namePicture,
+        `date_update`=CURRENT_TIMESTAMP,
+        `publish`=:publish,
+        `valid`=:valid 
+        WHERE `idUser` = :idUser AND `id` = :id;";
+        return ActionDB::access($update, $param, 1);
+    }
     protected function validAndPublishArticle ($idArticle) {
         $select = "SELECT `publish`, `valid` FROM `articles` WHERE `id` = :id;";
         $param = [['prep'=>':id', 'variable'=>$idArticle]];

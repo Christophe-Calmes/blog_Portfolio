@@ -19,7 +19,7 @@ if($controlPost == $mark) {
     $_POST['namePicture'] = $namePicture;
     $parametre = new Preparation();
     $param = $parametre->creationPrepIdUser ($_POST);
-    print_r($param);
+
     if (file_exists('../sources/pictures/articlesPictures')) {
         if(move_uploaded_file($_FILES['namePicture']['tmp_name'], $f = '../sources/pictures/articlesPictures/'.$namePicture)) {
             $addArticle->insertNewArticle($param);

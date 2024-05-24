@@ -50,6 +50,17 @@ function borneSelect($data, $maxArray) {
     return 1;
   }
 }
+function testBornSelect($data, $maxArray) {
+  if($data == 0) {
+    return 1;
+  }
+  if ($data > $maxArray) {
+    return 0;
+  }
+  if (($data > 0)&&($data <= $maxArray) ) {
+    return 1;
+  }
+}
 
 function redirect($data, $idNav) {
   foreach ($data as $key => $value) {

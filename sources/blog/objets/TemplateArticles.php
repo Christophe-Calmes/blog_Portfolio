@@ -1,5 +1,6 @@
 <?php
 require('sources/blog/objets/SQLArticles.php');
+require ('sources/blog/objets/TemplateCategories.php');
 require ('functions/functionPresentationText.php');
 
 final class TemplateArticles extends SQLArticles
@@ -52,6 +53,7 @@ final class TemplateArticles extends SQLArticles
         echo '</article>';
     }
     public function displayOneArticleAdmin ($idArticle, $idNav) {
+        $formCategorie = new TemplateCategories ();
         $statusArticle = $this->validAndPublishArticle ($idArticle);
         $dataArticle = $this->selectOneArticle ($idArticle, $statusArticle[0]['publish'], $statusArticle[0]['valid']);
         $articleEnchanced = $dataArticle[0]['textArticle'];
@@ -59,12 +61,46 @@ final class TemplateArticles extends SQLArticles
         $articleEnchanced = lineBreak ($articleEnchanced);
         $articleEnchanced = strongHTML ($articleEnchanced);
         $articleEnchanced = linkHTML ($articleEnchanced);
-
             echo '<article class="articleBlog">
                     <h2>'.$dataArticle[0]['title'].'</h2>
                     <h4>Catégorie de l\'article : '.$dataArticle[0]['nameCategorie'].'</h4>
+                    <img class="imgCarouselAuto" src="'.$this->picturePath.$dataArticle[0]['namePicture'].'" alt="Picture of '.$dataArticle[0]['title'].'"/>
                     <p>'.$articleEnchanced.'</p>
                 </article>';
-
+        echo '<form class="formulaireClassique" action="'.encodeRoutage(73).'" method="post" enctype="multipart/form-data">';
+                $formCategorie->selectACategorie ();
+               echo'<label for="title">Titre de l\'article</label>
+                <input type="text" name="title" id="title" value="'.$dataArticle[0]['title'].'">
+                <label for="textArticle">Texte de votre article</label>
+<textarea name="textArticle" id="" cols="90" rows="30">
+'.$dataArticle[0]['textArticle'].'
+</textarea>
+                <label for="publish">Publier ?</label>
+                <select name="publish" id="publish">'; 
+                    for ($i=0; $i <count($this->yes);$i++) { 
+                        if($i == $dataArticle[0]['publish']){
+                            echo '<option value="'.$i.'" selected>'.$this->yes[$i].'</option>';
+                        } else {
+                            echo '<option value="'.$i.'">'.$this->yes[$i].'</option>';
+                        }
+                        
+                    }
+            echo'</select>
+            <label for="valid">Valider ?</label>
+            <select name="valid" id="valid">'; 
+                for ($i=0; $i <count($this->yes);$i++) { 
+                    if($i == $dataArticle[0]['valid']){
+                        echo '<option value="'.$i.'" selected>'.$this->yes[$i].'</option>';
+                    } else {
+                        echo '<option value="'.$i.'">'.$this->yes[$i].'</option>';
+                    }
+                    
+                }
+        echo'</select>
+                <label for="namePicture">Image d\'illustration de l\'article ?</label>
+                <input id="namePicture" type="file" name="namePicture" accept="image/png, image/jpeg, image/webp"/>
+                <input type="hidden" name="id" value="'.$dataArticle[0]['idArticle'].'"/>
+                <button type="submit" name="idNav" value="'.$idNav.'">Mettre à jour</button>
+            </form>';
     }
 }
