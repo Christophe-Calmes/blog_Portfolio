@@ -74,6 +74,18 @@ class SQLArticles
         WHERE `idUser` = :idUser AND `id` = :id;";
         return ActionDB::access($update, $param, 1);
     }
+    public function updateArticleNoPicture ($param) {
+        $update = "UPDATE `articles` 
+        SET `id_categorie`=:id_categorie,
+        `idUser`= :idUser,
+        `title`= :title,
+        `textArticle`=:textArticle,
+        `date_update`=CURRENT_TIMESTAMP,
+        `publish`=:publish,
+        `valid`=:valid 
+        WHERE `idUser` = :idUser AND `id` = :id;";
+        return ActionDB::access($update, $param, 1);
+    }
     protected function validAndPublishArticle ($idArticle) {
         $select = "SELECT `publish`, `valid` FROM `articles` WHERE `id` = :id;";
         $param = [['prep'=>':id', 'variable'=>$idArticle]];

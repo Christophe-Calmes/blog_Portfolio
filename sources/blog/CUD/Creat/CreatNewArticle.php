@@ -11,8 +11,7 @@ if(checkPostFields ($arrayKey, $_POST)) {
     array_push($controlPost, $addArticle->checkCategorieBeforeCreatArticle ($_POST[$arrayKey[0]]));
     array_push($controlPost, sizePost(filter($_POST[$arrayKey[1]]), 80));
     array_push($controlPost, sizePost(filter($_POST[$arrayKey[2]]), 7500));
-    array_push($controlPost, controlePicture($_FILES, 1000000));
-    
+    array_push($controlPost, controlePicture($_FILES, 650000));
 }
 if($controlPost == $mark) {
     $namePicture = genToken (5).date('Y').filter($_FILES['namePicture']['name']);
@@ -27,7 +26,6 @@ if($controlPost == $mark) {
             return header('location:../index.php?idNav='.$idNav.'&message=New record article success');
         } 
     }
-
-} else {
- return header('location:../index.php?idNav='.$idNav.'&message=New record article fail');
+} else {   
+ return header('location:../index.php?idNav='.$idNav.'&message=Update record article fail');
 }
