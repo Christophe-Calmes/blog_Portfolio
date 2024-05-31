@@ -1,6 +1,5 @@
 <?php
   require ('functions/functionPagination.php');
-  require ('functions/functionDateTime.php');
   require ('sources/blog/objets/TemplateArticles.php');
   $displayArticle = new TemplateArticles ();
   if(isset($_GET['page']) && (!empty($_GET['page']))) {

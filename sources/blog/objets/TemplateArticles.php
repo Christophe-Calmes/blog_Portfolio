@@ -63,12 +63,26 @@ final class TemplateArticles extends SQLArticles
         $articleEnchanced = lineBreak ($articleEnchanced);
         $articleEnchanced = strongHTML ($articleEnchanced);
         $articleEnchanced = linkHTML ($articleEnchanced);
-            echo '<article class="articleBlog">
-                    <h2>'.$dataArticle[0]['title'].'</h2>
-                    <h4>Catégorie de l\'article : '.$dataArticle[0]['nameCategorie'].'</h4>
-                    <img class="imgCarouselAuto" src="'.$this->picturePath.$dataArticle[0]['namePicture'].'" alt="Picture of '.$dataArticle[0]['title'].'"/>
-                    <p>'.$articleEnchanced.'</p>
-                </article>';
+        echo '<div class="BlogArticle">
+        <div class="PictureZone">
+            <img class="pictureBlog" src="'.$this->picturePath.$dataArticle[0]['namePicture'].'" alt="Picture of '.$dataArticle[0]['title'].'"/>
+        </div>
+            <div class="ArticleZone">
+                <div class="TitleZone"><h2>'.$dataArticle[0]['title'].'</h2>
+                <h4>Catégorie de l\'article : '.$dataArticle[0]['nameCategorie'].'</h4>
+                <br/>
+                Créé le '.brassageDate($dataArticle[0]['date_creat']);
+                if($dataArticle[0]['date_update'] != NULL) {
+                    echo '<br/> Modifier le :'.brassageDate($dataArticle[0]['date_update']);
+                }
+            
+            echo'</div>
+            <div class="textZone">
+                <p>'.$articleEnchanced.'</p>
+                <p class="author">'.$dataArticle[0]['prenom'].' '.$dataArticle[0]['nom'].'</p>
+            </div>
+        </div>
+    </div>';
         echo '<form class="formulaireClassique" action="'.encodeRoutage(73).'" method="post" enctype="multipart/form-data">';
                 $formCategorie->selectACategorie ();
                echo'<label for="title">Titre de l\'article</label>
@@ -123,7 +137,7 @@ final class TemplateArticles extends SQLArticles
                         <h4>Catégorie de l\'article : '.$dataArticle[0]['nameCategorie'].'</h4>
                         <br/>
                         Créé le '.brassageDate($dataArticle[0]['date_creat']);
-                        if(!empty($dataArticle[0]['date_creat'])) {
+                        if($dataArticle[0]['date_update'] != NULL) {
                             echo '<br/> Modifier le :'.brassageDate($dataArticle[0]['date_update']);
                         }
                     
