@@ -375,6 +375,45 @@ select:disabled {
 
 .valide { grid-area: valide; }
 
+.BlogArticle {  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "ArticleZone PictureZone";
+}
+.PictureZone { grid-area: PictureZone; }
+.pictureBlog {
+  width: 25vw;
+}
+.ArticleZone {  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.2fr 1.8fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "TitleZone"
+    "textZone";
+  grid-area: ArticleZone;
+}
+.TitleZone { 
+  grid-area: TitleZone;
+  text-align: left;
+  padding-left: 3em;
+}
+.textZone { 
+  grid-area: textZone;
+  text-align: justify;
+  padding-left: 4em;
+}
+.author {
+  font-weight: 700;
+}
+
+
+
+
 /*Gallery Events*/
 .gallery {
     margin: 2vh auto 0;
@@ -830,5 +869,10 @@ font-size: 0.8em;
   .flex-rows-carousel {
     flex-direction: column;
   }
+  .BlogArticle {  
+    display: flex;
+    flex-direction: column;
+  }
+ 
 }
 /*Burger Menu*/

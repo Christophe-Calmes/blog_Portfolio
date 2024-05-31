@@ -2,6 +2,7 @@
 require('sources/blog/objets/SQLArticles.php');
 require ('sources/blog/objets/TemplateCategories.php');
 require ('functions/functionPresentationText.php');
+require('functions/functionDateTime.php');
 
 final class TemplateArticles extends SQLArticles
 {
@@ -46,7 +47,8 @@ final class TemplateArticles extends SQLArticles
                         <button type="submit" name="idNav" value="'.$idNav.'">Delete</button>
                     </form>';
                     }
-            echo '<a href="'.findTargetRoute(158).'&idArticle='.$value['id'].'">Voir l\'article</a>';
+            echo '<a href="'.findTargetRoute(158).'&idArticle='.$value['id'].'">Modifier l\'article</a>';
+            echo '<a href="'.findTargetRoute(159).'&idArticle='.$value['id'].'">Voir l\'article</a>';
             echo '</div>';
 
             }
@@ -102,5 +104,35 @@ final class TemplateArticles extends SQLArticles
                 <input type="hidden" name="id" value="'.$dataArticle[0]['idArticle'].'"/>
                 <button type="submit" name="idNav" value="'.$idNav.'">Mettre à jour</button>
             </form>';
+    }
+    public function displayOneArticleView ($idArticle) {
+        $formCategorie = new TemplateCategories ();
+        $statusArticle = $this->validAndPublishArticle ($idArticle);
+        $dataArticle = $this->selectOneArticle ($idArticle, $statusArticle[0]['publish'], $statusArticle[0]['valid']);
+        $articleEnchanced = $dataArticle[0]['textArticle'];
+        $articleEnchanced = listHTML($articleEnchanced, 'listClass');
+        $articleEnchanced = lineBreak ($articleEnchanced);
+        $articleEnchanced = strongHTML ($articleEnchanced);
+        $articleEnchanced = linkHTML ($articleEnchanced);
+      echo '<div class="BlogArticle">
+                <div class="PictureZone">
+                    <img class="pictureBlog" src="'.$this->picturePath.$dataArticle[0]['namePicture'].'" alt="Picture of '.$dataArticle[0]['title'].'"/>
+                </div>
+                    <div class="ArticleZone">
+                        <div class="TitleZone"><h2>'.$dataArticle[0]['title'].'</h2>
+                        <h4>Catégorie de l\'article : '.$dataArticle[0]['nameCategorie'].'</h4>
+                        <br/>
+                        Créé le '.brassageDate($dataArticle[0]['date_creat']);
+                        if(!empty($dataArticle[0]['date_creat'])) {
+                            echo '<br/> Modifier le :'.brassageDate($dataArticle[0]['date_update']);
+                        }
+                    
+                    echo'</div>
+                    <div class="textZone">
+                        <p>'.$articleEnchanced.'</p>
+                        <p class="author">'.$dataArticle[0]['prenom'].' '.$dataArticle[0]['nom'].'</p>
+                    </div>
+                </div>
+            </div>';
     }
 }

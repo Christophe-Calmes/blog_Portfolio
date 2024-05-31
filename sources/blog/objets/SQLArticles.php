@@ -92,11 +92,12 @@ class SQLArticles
         return ActionDB::select($select, $param, 1);
     }
     protected function selectOneArticle ($idArticle, $publish, $valid) {
-        $select = "SELECT `articles`.`id` AS `idArticle`, `id_categorie`, `idUser`, `title`, 
+        $select = "SELECT `articles`.`id` AS `idArticle`, `id_categorie`, `articles`.`idUser` AS `author`, `title`, 
         `textArticle`, `namePicture`, `date_creat`, `date_update`, `publish`, 
-        `articles`.`valid`, `nameCategorie` 
+        `articles`.`valid`, `nameCategorie`, `prenom`, `nom`
         FROM `articles`
         INNER JOIN `categories`ON   `categories`.`id` = `articles`. `id_categorie`
+        INNER JOIN `xgyd0647_grainesporfolio`.`users` ON `xgyd0647_grainesporfolio`.`users`.`idUser` = `xgyd0647_blog`.`articles`.`idUser`
         WHERE `articles`.`id` = :id AND `publish` = :publish AND  `articles`.`valid` =:valid;";
         $param = [['prep'=>':id', 'variable'=>$idArticle],
                 ['prep'=>':publish', 'variable'=>$publish], 
