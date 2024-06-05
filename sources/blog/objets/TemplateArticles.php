@@ -54,6 +54,36 @@ final class TemplateArticles extends SQLArticles
             }
         echo '</article>';
     }
+    public function displayTitleArticleForOnePageForOneCategorie ($premier, $parPage, $idNav, $idCategorie) {
+        $dataArticle = $this->articleForOnePageForOneCategorie ($premier, $parPage, $idCategorie);
+        echo '<article class="gallery">';
+            foreach($dataArticle as $value) {
+                $messageValid = 'Valid';
+                if($value['valid'] == 1) {
+                    $messageValid = 'Unvalider';
+                }
+                $messagePublish = 'Publish';
+                if($value['publish'] == 1) {
+                    $messagePublish = 'Unpublish';
+                }
+                echo '<div class="item">
+                        <ul class="listClass">
+                            <li>Categorie : '.$value['nameCategorie'].'</li>
+                            <li>'.$value['title'].'</li>
+                            <li>Date de création : '.brassageDate($value['date_creat']).'</li>
+                            <li>Date de modification : '.brassageDate($value['date_update']).'</li>
+                            <li><img class="miniaturePicture" src="'.$this->picturePath.$value['namePicture'].'" alt="Picture of '.$value['title'].'"/></li>
+                            <li>Publish : '.$this->yes[$value['publish']].'</li>
+                            <li>Valid : '.$this->yes[$value['valid']].'</li>
+                        </ul>';
+            echo '<a href="'.findTargetRoute(161).'&idArticle='.$value['id'].'">Voir l\'article</a>';
+            echo '</div>';
+
+            }
+        echo '</article>';
+    }
+
+
     public function displayOneArticleAdmin ($idArticle, $idNav) {
         $formCategorie = new TemplateCategories ();
         $statusArticle = $this->validAndPublishArticle ($idArticle);
@@ -118,6 +148,36 @@ final class TemplateArticles extends SQLArticles
                 <input type="hidden" name="id" value="'.$dataArticle[0]['idArticle'].'"/>
                 <button type="submit" name="idNav" value="'.$idNav.'">Mettre à jour</button>
             </form>';
+    }
+    public function displayOneArticlePublic ($idArticle, $idNav) {
+        $formCategorie = new TemplateCategories ();
+        $statusArticle = $this->validAndPublishArticle ($idArticle);
+        $dataArticle = $this->selectOneArticle ($idArticle, $statusArticle[0]['publish'], $statusArticle[0]['valid']);
+        $articleEnchanced = $dataArticle[0]['textArticle'];
+        $articleEnchanced = listHTML($articleEnchanced, 'listClass');
+        $articleEnchanced = lineBreak ($articleEnchanced);
+        $articleEnchanced = strongHTML ($articleEnchanced);
+        $articleEnchanced = linkHTML ($articleEnchanced);
+        echo '<div class="BlogArticle">
+        <div class="PictureZone">
+            <img class="pictureBlog" src="'.$this->picturePath.$dataArticle[0]['namePicture'].'" alt="Picture of '.$dataArticle[0]['title'].'"/>
+        </div>
+            <div class="ArticleZone">
+                <div class="TitleZone"><h2>'.$dataArticle[0]['title'].'</h2>
+                <h4>Catégorie de l\'article : '.$dataArticle[0]['nameCategorie'].'</h4>
+                <br/>
+                Créé le '.brassageDate($dataArticle[0]['date_creat']);
+                if($dataArticle[0]['date_update'] != NULL) {
+                    echo '<br/> Modifier le :'.brassageDate($dataArticle[0]['date_update']);
+                }
+            
+            echo'</div>
+            <div class="textZone">
+                <p>'.$articleEnchanced.'</p>
+                <p class="author">'.$dataArticle[0]['prenom'].' '.$dataArticle[0]['nom'].'</p>
+            </div>
+        </div>
+    </div>';
     }
     public function displayOneArticleView ($idArticle) {
         $formCategorie = new TemplateCategories ();

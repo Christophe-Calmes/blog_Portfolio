@@ -27,6 +27,13 @@ class SQLArticles
         return $nbrArticle[0]['nbrArticle'];
 
     }
+    public function numberOfArticlesForOneCategorie($idCategorie) {
+        $select = "SELECT COUNT(`id`) AS `nbrArticle` FROM `articles` WHERE `id_categorie` = :id_categorie;";
+        $param = [['prep'=>':id_categorie', 'vairable'=>$idCategorie]];
+        $nbrArticle = ActionDB::select($select, $param, 1);
+        return $nbrArticle[0]['nbrArticle'];
+
+    }
     protected function articleForOnePage ($premier, $parPage) {
         $select = "SELECT `articles`.`id`, `idUser`, `title`,`namePicture`, `date_creat`, `date_update`, `publish`, `articles`.`valid`, `nameCategorie`
         FROM `articles`
@@ -34,6 +41,18 @@ class SQLArticles
         ORDER BY `date_creat`, `nameCategorie` DESC LIMIT {$premier}, {$parPage};";
         return ActionDB::select($select, [], 1);
     }
+
+    protected function articleForOnePageForOneCategorie ($premier, $parPage, $idCategorie) {
+        $select = "SELECT `articles`.`id`, `idUser`, `title`,`namePicture`, `date_creat`, `date_update`, `publish`, `articles`.`valid`, `nameCategorie`
+        FROM `articles`
+        INNER JOIN `categories`ON   `articles`.`id_categorie` = `categories`.`id`
+        WHERE `id_categorie` = :id_categorie
+        ORDER BY `date_creat`, `nameCategorie` DESC LIMIT {$premier}, {$parPage};";
+         $param = [['prep'=>':id_categorie', 'variable'=>$idCategorie]];
+        return ActionDB::select($select, $param, 1);
+    }
+
+
     public function updatePublishArticle ($param) {
         $update = "UPDATE `articles` SET `publish` = `publish` ^1, `date_update` = CURRENT_TIMESTAMP WHERE `id` = :id;";
         return ActionDB::access($update, $param, 1);
@@ -104,4 +123,5 @@ class SQLArticles
                 ['prep'=>':valid', 'variable'=>$valid]];
         return ActionDB::select($select, $param, 1);
     }
+
 }

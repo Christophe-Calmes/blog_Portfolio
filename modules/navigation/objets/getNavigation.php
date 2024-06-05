@@ -60,4 +60,8 @@ Class GetNavigation {
     $param = [['prep'=>':valide', 'variable'=>$valide]];
     return ActionDB::select($select, $param);
   }
+  protected function getCategoriesArticles () {
+    $select = "SELECT `id` AS `idCategories`, `nameCategorie` FROM `categories` WHERE `valid` = 1 ORDER BY `nameCategorie`";
+    return ActionDB::select($select, [], 1);
+  }
 }

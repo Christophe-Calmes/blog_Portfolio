@@ -22,12 +22,26 @@ Class PrintNavigation extends GetNavigation {
     return $rolesUsers;
   }
   public function bandeauHaut($variable){
+    $dataCategoriesBlog = $this->getCategoriesArticles ();
     echo '<div class="menu-btn">
               <div class="btn-line"></div>
               <div class="btn-line"></div>
               <div class="btn-line"></div>
           </div>';
-    echo '<nav class="nav menu"><ul class="navigationBandeau">';
+    echo '<nav class="nav menu">
+            <ul class="navigationBandeau">';
+      if(!empty($dataCategoriesBlog)) {
+        echo '<div class="dropdown">';
+          echo '<button class="buttonForm">Catégories du blog</button>';
+          echo ' <div class="dropdown-child">';
+        foreach ($dataCategoriesBlog as $value) {
+          echo '<div><a href="'.findTargetRoute(160).'&idCategories='.$value['idCategories'].'">'.$value['nameCategorie'].'</a></div>';
+        }
+        echo '</div>';
+        echo '</div>';
+      }
+
+
       foreach ($variable as $value) {
         if(($value['zoneMenu'] == 0)&&($value['deroulant'] == 0)) {
           echo '<li><a href="index.php?idNav='.$value['targetRoute'].'">'.$value['nomNav'].'</a></li>';
@@ -43,6 +57,8 @@ Class PrintNavigation extends GetNavigation {
           echo '</div>';
         }
       }
+
+
     echo '</ul>
     </nav>';
     include 'javaScript/magicBurger.php';
